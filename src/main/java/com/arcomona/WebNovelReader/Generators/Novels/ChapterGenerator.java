@@ -1,4 +1,4 @@
-package com.arcomona.WebNovelReader.Generators;
+package com.arcomona.WebNovelReader.Generators.Novels;
 
 import java.io.*;
 
