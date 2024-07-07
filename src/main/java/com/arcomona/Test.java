@@ -9,6 +9,6 @@ public static void main(String [] args) {
 //    chapterGenerator.generateChapter("novel", "header", "content");
 
     ResourceGenerator resourceGenerator = new ResourceGenerator();
-    resourceGenerator.generateAll("novel", "header", "content");
+    resourceGenerator.generateAll("novel1", "Chapter1", "content");
 
 }
