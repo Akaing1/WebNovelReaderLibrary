@@ -4,18 +4,18 @@ import java.io.*;
 
 public class ChapterGenerator {
 
-    private final String chaptersFolder = "src/main/resources/generated/";
+    private final String PATH = "src/main/resources/generated/";
 
     public boolean generateChapter(String novel, String chapterHeader, String chapterContent) {
 
-        File novelDir = new File(STR."\{chaptersFolder}/\{novel}/");
+        File novelDir = new File(STR."\{PATH}/\{novel}/");
         novelDir.mkdir();
 
-        File chapter = new File(STR."\{chaptersFolder}/\{novel}/\{chapterHeader}.txt");
+        File chapter = new File(STR."\{PATH}/\{novel}/\{chapterHeader}.txt");
 
         try {
             if (chapter.createNewFile()) {
-                FileWriter writeContent = new FileWriter(STR."\{chaptersFolder}/\{novel}/\{chapterHeader}.txt");
+                FileWriter writeContent = new FileWriter(STR."\{PATH}/\{novel}/\{chapterHeader}.txt");
                 writeContent.write(chapterContent);
                 writeContent.close();
                 return true;

@@ -9,18 +9,19 @@ class ChapterGeneratorTest {
 
     private String novelName, chapterHeader, chapterContent;
 
+    private ChapterGenerator chapterGenerator;
 
     @BeforeEach
     void setUp() {
         novelName = "exampleName";
         chapterHeader = "exampleHeader";
         chapterContent = "exampleContent";
+
+        chapterGenerator = new ChapterGenerator();
     }
 
     @Test
     void testGenerateChapter(){
-
-        ChapterGenerator chapterGenerator = new ChapterGenerator();
         assertTrue(chapterGenerator.generateChapter(novelName, chapterHeader, chapterContent));
     }
 
