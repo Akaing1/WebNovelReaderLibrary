@@ -5,7 +5,7 @@ import java.io.File;
 
 public static void main(String [] args) {
 
-//    ChapterGenerator chapterGenerator = new ChapterGenerator();
+    ChapterGenerator chapterGenerator = new ChapterGenerator();
 //    chapterGenerator.generateChapter("novel", "header", "content");
 
     ResourceGenerator resourceGenerator = new ResourceGenerator();
