@@ -21,7 +21,7 @@ public class ChapterGenerator {
                 return true;
             }
 
-            System.out.println("File already exists.");
+            System.out.println("Chapter already exists.");
 
         } catch (IOException e) {
             System.out.println("An error occurred.");

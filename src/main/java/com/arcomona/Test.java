@@ -5,10 +5,10 @@ import java.io.File;
 
 public static void main(String [] args) {
 
-    ChapterGenerator chapterGenerator = new ChapterGenerator();
+//    ChapterGenerator chapterGenerator = new ChapterGenerator();
 //    chapterGenerator.generateChapter("novel", "header", "content");
 
     ResourceGenerator resourceGenerator = new ResourceGenerator();
-    resourceGenerator.generateAll("novel", "header", "content");
+    resourceGenerator.generateAll("novel1", "Chapter1", "content");
 
 }
