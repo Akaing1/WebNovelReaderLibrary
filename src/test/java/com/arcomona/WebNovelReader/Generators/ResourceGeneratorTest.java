@@ -1,27 +1,27 @@
 package com.arcomona.WebNovelReader.Generators;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ChapterGeneratorTest {
+class ResourceGeneratorTest {
 
     private String novelName, chapterHeader, chapterContent;
-
+    private ResourceGenerator resourceGenerator;
 
     @BeforeEach
     void setUp() {
         novelName = "exampleName";
         chapterHeader = "exampleHeader";
         chapterContent = "exampleContent";
+
+        resourceGenerator = new ResourceGenerator();
     }
 
     @Test
-    void testGenerateChapter(){
-
-        ChapterGenerator chapterGenerator = new ChapterGenerator();
-        assertTrue(chapterGenerator.generateChapter(novelName, chapterHeader, chapterContent));
+    void testGenerateAll(){
+        assertTrue(resourceGenerator.generateAll(novelName, chapterHeader, chapterContent));
     }
 
 }
