@@ -18,7 +18,7 @@ import java.util.*;
 
 public static void main(String [] args) throws IOException {
 
-    String url = "https://www.webnovelpub.pro/novel/how-to-survive-at-the-academy-1428/chapter-3-30041322";
+    String url = "https://www.webnovelpub.pro/novel/the-novels-extra-5/chapter-0-30041322";
 
     Document data = Jsoup.connect(url).get();
 
