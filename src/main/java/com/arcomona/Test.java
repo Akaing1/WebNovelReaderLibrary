@@ -1,7 +1,6 @@
-package com.arcomona;
+import com.arcomona.WebNovelReader.Run.QueryChapters;
 
-public class Test {
-    public static void main(String[] args) {
-        System.out.println("Hello world!");
-    }
+public static void main(String [] args) {
+
+    QueryChapters queryChapters = new QueryChapters();
 }
