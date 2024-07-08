@@ -5,6 +5,7 @@ import com.arcomona.WebNovelReader.Generators.ResourceGenerator;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.safety.Safelist;
 import org.jsoup.select.Elements;
 
 
@@ -12,61 +13,38 @@ import javax.xml.crypto.Data;
 import java.io.*;
 
 import java.net.*;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 public static void main(String [] args) throws IOException {
 
-//    ChapterGenerator chapterGenerator = new ChapterGenerator();
-//    chapterGenerator.generateChapter("novel", "header", "content");
-
-    String url = "https://www.webnovelpub.pro/novel/how-to-survive-at-the-academy-1428/chapter-1-30041322";
-
-    WebsiteDataRetrieval webdata = new WebsiteDataRetrieval();
-    //System.out.println(webdata.dataRetrieval(url));
-
-
+    String url = "https://www.webnovelpub.pro/novel/how-to-survive-at-the-academy-1428/chapter-3-30041322";
 
     Document data = Jsoup.connect(url).get();
 
-    System.out.println(data.toString().indexOf("class=\"booktitle\""));
-    System.out.println(data.toString().indexOf("class=\"chapternav skiptranslate\""));
-
     String subString = data.toString().substring(data.toString().indexOf("class=\"booktitle\""), data.toString().indexOf("class=\"chapternav skiptranslate\""));
 
+
+//    String novelName = dataParser.getNovelName(); // .replaceAll("[^a-zA-Z0-9]", "");;
+//    String novelChapter = dataParser.getNovelChapter(); // .replaceAll("[^a-zA-Z0-9]", "");
+//    String chapterContent = dataParser.getNovelChapterContent();
+
+
+//    Document.OutputSettings outputSettings = new Document.OutputSettings();
+//    outputSettings.prettyPrint(false);
+
+//    System.out.println(Jsoup.clean(novelName, "", Safelist.none(), outputSettings));
+//    System.out.println(Jsoup.clean(novelChapter, "", Safelist.none(), outputSettings));
+//    System.out.println(Jsoup.clean(chapterContent, "", Safelist.none(), outputSettings));
+
     DataParser dataParser = new DataParser(url);
+    ResourceGenerator resourceGenerator = new ResourceGenerator();
 
-    System.out.println(dataParser.getNovelName());
-    System.out.println(dataParser.getNovelChapter());
+    dataParser.populateFilteredData();
+    HashMap<String, String> map = dataParser.getFilteredData();
+    System.out.println(map);
 
+    resourceGenerator.generateAll(map.get("title"), map.get("chaptertitle"), map.get("body"));
 
-
-
-
-
-
-
-
-//    File file = new File("src/main/resources/generated/data.txt");
-//    file.createNewFile();
-//    FileWriter writeContent = new FileWriter("src/main/resources/generated/data.txt");
-//    writeContent.write(data.toString());
-//    writeContent.close();
-
-//    Elements as = data.select("p");
-//    String currentTitle = null;
-//    Map<String, List<String>> mas = new LinkedHashMap<>();
-//    for (Element a : as){
-//        if ("h3".equals(a.previousElementSibling().tagName())){
-//            currentTitle = a.previousElementSibling().text();
-//            mas.put(currentTitle, new ArrayList<String>());
-//        }
-//        mas.get(currentTitle).add(a.text());
-//    }
-//
-//    System.out.println(""+mas);
 
 }
