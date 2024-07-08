@@ -20,7 +20,6 @@ public class QueryChapters {
 
         int responseCode = connection.getResponseCode();
 
-        System.out.println(responseCode);
         while (responseCode == HttpURLConnection.HTTP_OK) {
 
             DataParser dataParser = new DataParser(url);
