@@ -17,8 +17,6 @@ public class ResourceGenerator {
         f.mkdir();
 
         ChapterGenerator chaptGen = new ChapterGenerator();
-        if(chaptGen.generateChapter(novel, chapterHeader, chapterContent))
-            return true;
-        return false;
+        return chaptGen.generateChapter(novel, chapterHeader, chapterContent);
     }
 }
