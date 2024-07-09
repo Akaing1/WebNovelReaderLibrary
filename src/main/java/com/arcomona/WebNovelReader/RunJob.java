@@ -17,6 +17,8 @@ public class RunJob {
 
             QueryChapters queryChapters = new QueryChapters(url);
             queryChapters.runChapterQuery();
+
+            url = userInput.getUserInput();
         }
     }
 }

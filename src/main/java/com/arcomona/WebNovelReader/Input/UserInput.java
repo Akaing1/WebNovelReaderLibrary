@@ -17,7 +17,6 @@ public class UserInput {
         if(isValidNovelURL(url))
             return url;
         return null;
-
     }
 
     private boolean isValidNovelURL(String url) throws IOException {
