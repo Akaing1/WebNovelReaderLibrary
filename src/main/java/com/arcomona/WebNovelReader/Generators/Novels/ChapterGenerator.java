@@ -13,7 +13,6 @@ public class ChapterGenerator {
 
         File chapter = new File(STR."\{PATH}/\{novel}/\{chapterHeader}.txt");
 
-
         try {
             if (chapter.createNewFile()) {
                 FileWriter writeContent = new FileWriter(STR."\{PATH}/\{novel}/\{chapterHeader}.txt");

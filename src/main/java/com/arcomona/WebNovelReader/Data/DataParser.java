@@ -53,7 +53,8 @@ public class DataParser {
                 data.indexOf("\"chapternav skiptranslate\""));
     }
 
-    public String getNovelName() {
+    @NotNull
+    private String getNovelName() {
 
         String content = getContentSubString();
         String title = content.substring(content.indexOf("title=\""), content.indexOf(" rel=\"up\""));
@@ -61,7 +62,8 @@ public class DataParser {
         return title;
     }
 
-    public String getNovelChapter() {
+    @NotNull
+    private String getNovelChapter() {
 
         String content = getContentSubString();
         String chapterTitle = content.substring(content.indexOf("\"chapter-title\">"), content.indexOf("</span></h1>"));
@@ -69,7 +71,8 @@ public class DataParser {
         return chapterTitle;
     }
 
-    public String getNovelChapterContent() {
+    @NotNull
+    private String getNovelChapterContent() {
 
         String content = getContentSubString();
         String chapterContent = content.substring(content.indexOf("<p>"), content.indexOf("</div>\n" +
