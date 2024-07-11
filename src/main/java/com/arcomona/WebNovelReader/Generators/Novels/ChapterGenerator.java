@@ -4,7 +4,7 @@ import java.io.*;
 
 public class ChapterGenerator {
 
-    private final String PATH = "src/main/resources/generated/";
+    private final String PATH = "src/main/resources/Novels/";
 
     public boolean generateChapter(String novel, String chapterHeader, String chapterContent) {
 
