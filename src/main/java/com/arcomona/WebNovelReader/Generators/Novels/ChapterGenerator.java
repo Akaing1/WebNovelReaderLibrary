@@ -8,14 +8,17 @@ public class ChapterGenerator {
 
     public boolean generateChapter(String novel, String chapterHeader, String chapterContent) {
 
-        File novelDir = new File(STR."\{PATH}/\{novel}/");
+        File novelDir = new File(STR."\{PATH}/\{novel}");
         novelDir.mkdir();
 
-        File chapter = new File(STR."\{PATH}/\{novel}/\{chapterHeader}.txt");
+        novelDir = new File(STR."\{PATH}/\{novel}/Chapters/");
+        novelDir.mkdir();
+
+        File chapter = new File(STR."\{PATH}/\{novel}/Chapters/\{chapterHeader}.txt");
 
         try {
             if (chapter.createNewFile()) {
-                FileWriter writeContent = new FileWriter(STR."\{PATH}/\{novel}/\{chapterHeader}.txt");
+                FileWriter writeContent = new FileWriter(STR."\{PATH}/\{novel}/Chapters/\{chapterHeader}.txt");
                 writeContent.write(chapterContent);
                 writeContent.close();
                 return true;
