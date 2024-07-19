@@ -2,25 +2,34 @@ package com.arcomona.WebNovelReader.Run;
 
 import com.arcomona.WebNovelReader.Data.DataParser;
 import com.arcomona.WebNovelReader.Generators.ResourceGenerator;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
 
-public class QueryChapters {
+public class BuildNovel {
+
+    private XWPFDocument novel = new XWPFDocument();
 
     private final ResourceGenerator resourceGenerator = new ResourceGenerator();
     private final String baseUrl;
 
-    public QueryChapters(String url){
-        this.baseUrl = url;
+    public BuildNovel(String baseUrl) {
+        this.baseUrl = baseUrl;
     }
 
-    public void runChapterQuery() throws IOException {
+    public void generateNovel() throws IOException {
 
         int chapterNumber = 1;
         String url = STR."\{baseUrl}/chapter-\{chapterNumber}";
+
+        DataParser dataParser = new DataParser(url);
+        dataParser.populateFilteredData();
+        HashMap<String, String> map = dataParser.getFilteredData();
 
         HttpURLConnection connection = (HttpURLConnection) (new URL(url)).openConnection();
         connection.setRequestMethod("GET");
@@ -29,24 +38,31 @@ public class QueryChapters {
 
         while (responseCode == HttpURLConnection.HTTP_OK) {
 
-            parseDataHelper(url);
+            addChapter(url);
 
             chapterNumber++;
             url = STR."\{baseUrl}/chapter-\{chapterNumber}";
 
             connection = (HttpURLConnection) (new URL(url)).openConnection();
             responseCode = connection.getResponseCode();
+
         }
+
+        resourceGenerator.generateNovel(map.get("title"), novel);
     }
 
-    public void parseDataHelper(String url) throws IOException {
+    private void addChapter(String url) throws IOException {
 
         DataParser dataParser = new DataParser(url);
 
         dataParser.populateFilteredData();
         HashMap<String, String> map = dataParser.getFilteredData();
 
-        resourceGenerator.generateChapters(map.get("title"), map.get("chaptertitle"), map.get("body"));
+        XWPFParagraph paragraph = novel.createParagraph();
+        XWPFRun run = paragraph.createRun();
+        run.setText(map.get("body"));
+
+        paragraph.setPageBreak(true);
 
         System.out.println((STR."Successfully added chapter: \{map.get("chaptertitle")}").replaceAll("_", " "));
     }

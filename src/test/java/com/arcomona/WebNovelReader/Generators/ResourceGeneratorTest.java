@@ -20,8 +20,8 @@ class ResourceGeneratorTest {
     }
 
     @Test
-    void testGenerateAll(){
-        assertTrue(resourceGenerator.generateAll(novelName, chapterHeader, chapterContent));
+    void testGenerateChapters(){
+        assertTrue(resourceGenerator.generateChapters(novelName, chapterHeader, chapterContent));
     }
 
 }
