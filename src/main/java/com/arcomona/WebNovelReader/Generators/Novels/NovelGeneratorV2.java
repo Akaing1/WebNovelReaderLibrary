@@ -19,9 +19,8 @@ public class NovelGeneratorV2 {
         FileOutputStream out = new FileOutputStream(STR."\{PATH}/\{novel}/\{novel}.docx");
 
         for(File file : files){
-            System.out.println(file);
             addChapters(file);
-            //System.out.println(STR."Successfully added \{file}");
+            System.out.println(STR."Successfully added \{file}".substring(STR."Successfully added \{file}".indexOf("Chapters")));
         }
 
         document.write(out);
@@ -35,12 +34,19 @@ public class NovelGeneratorV2 {
             reader = new BufferedReader(new FileReader(file));
             String line = reader.readLine();
 
+            XWPFParagraph paragraph;
+            XWPFRun run;
+
             while (line != null) {
-                XWPFParagraph paragraph = document.createParagraph();
-                XWPFRun run = paragraph.createRun();
+                paragraph = document.createParagraph();
+                run = paragraph.createRun();
                 run.setText(line);
                 line = reader.readLine();
             }
+            paragraph = document.createParagraph();
+            run = paragraph.createRun();
+
+            run.addBreak(BreakType.PAGE);
 
             reader.close();
         } catch (IOException e) {
