@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.regex.Pattern;
 
-// uses already downloaded data to generate novel
+// uses already downloaded data to generate novel  //
 
 public class BuildNovelV2 {
 
