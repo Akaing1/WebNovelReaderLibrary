@@ -9,13 +9,11 @@ import java.io.*;
 
 public class NovelGeneratorV2 {
 
-    private XWPFDocument document = new XWPFDocument();
-    private BufferedReader reader;
-    private final String PATH = "src/main/resources/Novels/";
-
+    private final XWPFDocument document = new XWPFDocument();
 
     public boolean generateNovel(String novel, File[] files) throws IOException {
 
+        String PATH = "src/main/resources/Novels/";
         FileOutputStream out = new FileOutputStream(STR."\{PATH}/\{novel}/\{novel}.docx");
 
         for(File file : files){
@@ -32,7 +30,7 @@ public class NovelGeneratorV2 {
 
     private void addChapters(File file) {
         try {
-            reader = new BufferedReader(new FileReader(file));
+            BufferedReader reader = new BufferedReader(new FileReader(file));
             String line = reader.readLine();
 
             XWPFParagraph paragraph;
