@@ -24,6 +24,7 @@ public class NovelGeneratorV2 {
         }
 
         document.write(out);
+        System.out.println(STR."\{novel}.docx written successfully");
         out.close();
 
         return false;
