@@ -7,6 +7,8 @@ import org.apache.poi.xwpf.usermodel.XWPFRun;
 
 import java.io.*;
 
+import static org.apache.commons.lang3.StringUtils.trim;
+
 public class NovelGeneratorV2 {
 
     private final XWPFDocument document = new XWPFDocument();
@@ -36,10 +38,14 @@ public class NovelGeneratorV2 {
             XWPFParagraph paragraph;
             XWPFRun run;
 
+            paragraph = document.createParagraph();
+            run = paragraph.createRun();
+            run.setText(file.getName().substring(0 ,file.getName().indexOf(".txt")));
+
             while (line != null) {
                 paragraph = document.createParagraph();
                 run = paragraph.createRun();
-                run.setText(line);
+                run.setText(trim(line));
                 line = reader.readLine();
             }
             paragraph = document.createParagraph();
