@@ -9,9 +9,9 @@ import java.io.IOException;
 
 public class RunJob {
 
-    public static void main(String[] args) throws IOException {
+    public static void main() throws IOException {
 
-        String url = "";
+        String url;
 
         UserInput userInput = new UserInput();
         url = userInput.getUserInput();
